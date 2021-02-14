@@ -1,21 +1,25 @@
-﻿using Client.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Client.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class ControlPage : ContentPage
     {
-        public LoginPage()
+        public ControlPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+        }
+
+        private void SendCommand(object sender, EventArgs e)
+        {
+
         }
     }
 }
