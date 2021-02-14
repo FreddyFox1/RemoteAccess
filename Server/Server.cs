@@ -50,7 +50,7 @@ namespace Server
                 }
                 catch
                 {
-                    ServerListener.Stop();
+                    Stop();
                 }
 
                 finally
@@ -60,7 +60,6 @@ namespace Server
                 }
             }
         }
-
 
         public void Stop()
         {
