@@ -1,9 +1,7 @@
-﻿using Server.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Server
 {
@@ -11,8 +9,9 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(SystemMessages.WelcomeMsg);
-            Console.Read();
+            ///Config server
+            Server server = new Server("192.168.2.128", 21);
+            server.Start();
         }
     }
 }
