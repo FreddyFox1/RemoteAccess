@@ -1,5 +1,4 @@
-﻿using Client.Models;
-using Client.Services;
+﻿using Client.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +9,7 @@ namespace Client.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        
 
         bool isBusy = false;
         public bool IsBusy

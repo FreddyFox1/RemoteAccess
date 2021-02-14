@@ -24,17 +24,49 @@ namespace Server
         public void Start()
         {
             ServerListener = new TcpListener(IPAddress, Port);
-            Printer.Print("Сервер запущен");
+            ServerListener.Start();
+
+            while (true)
+            {
+                TcpClient client = ServerListener.AcceptTcpClient();
+                NetworkStream stream = client.GetStream();
+                try
+                {
+                    if (stream.CanRead)
+                    {
+                        byte[] myReadBuffer = new byte[1024];
+                        StringBuilder myCompleteMessage = new StringBuilder();
+                        int numberOfBytesRead = 0;
+                        do
+                        {
+                            numberOfBytesRead = stream.Read(myReadBuffer, 0, myReadBuffer.Length);
+                            myCompleteMessage.AppendFormat("{0}", Encoding.UTF8.GetString(myReadBuffer, 0, numberOfBytesRead));
+                        }
+                        while (stream.DataAvailable);
+                        Byte[] responseData = Encoding.UTF8.GetBytes("УСПЕШНО!");
+                        stream.Write(responseData, 0, responseData.Length);
+                        Console.WriteLine(myCompleteMessage);
+                    }
+                }
+                catch
+                {
+                    ServerListener.Stop();
+                }
+
+                finally
+                {
+                    stream.Close();
+                    client.Close();
+                }
+            }
         }
+
 
         public void Stop()
         {
             ServerListener.Stop();
             Printer.Print("Сервер выключен");
         }
-
-
-
 
     }
 }
