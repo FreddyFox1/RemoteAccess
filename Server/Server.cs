@@ -65,7 +65,6 @@ namespace Server
         public void Stop()
         {
             ServerListener.Stop();
-            Printer.Print("Сервер выключен");
         }
 
     }
