@@ -26,15 +26,14 @@ namespace Server
         {
             ServerListener = new TcpListener(IPAddress, Port);
             ServerListener.Start();
-
             while (true)
             {
                 TcpClient client = ServerListener.AcceptTcpClient();
-
                 if (client != null)
                 {
                     ServerReceiver receiver = new ServerReceiver(client);
-                    new Thread(() => receiver.StartReceive()).Start();
+                    new Thread(() 
+                        => receiver.StartReceive()).Start();
                 }
             }
         }

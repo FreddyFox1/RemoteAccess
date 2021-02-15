@@ -18,10 +18,6 @@ namespace Server
             //Запускаем сервер в отдельном потоке
             new Thread(() => server.Start()).Start();
         }
-
-
-   
-        
     }
 }
 
