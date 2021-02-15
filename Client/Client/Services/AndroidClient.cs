@@ -19,7 +19,7 @@ namespace Client.Services
             Port = int.Parse(port);
         }
 
-        public string PowerOff(string Message)
+        public bool SendRequest(string Message)
         {
             ClientSender = new TcpClient(IPAddress, Port);
             Byte[] data = Encoding.UTF8.GetBytes(Message);
@@ -41,7 +41,11 @@ namespace Client.Services
                 }
                 while (stream.DataAvailable);
                 responseData = completeMessage.ToString();
-                return responseData;
+                if (!(String.IsNullOrEmpty(responseData)))
+                {
+                    return true;
+                }
+                else return false;
             }
             finally
             {

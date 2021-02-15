@@ -9,8 +9,8 @@ namespace Client.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
+            Title = "О программе";
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://github.com/FreddyFox1/RemoteAccess"));
         }
 
         public ICommand OpenWebCommand { get; }

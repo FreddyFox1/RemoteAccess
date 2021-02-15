@@ -23,17 +23,17 @@ namespace Client.Views
         private void PowerOff(object sender, EventArgs e)
         {
             client = new AndroidClient(AdressServer.Text, PortServer.Text);
-            new Thread(() =>
-               client.PowerOff("Первое сообщение от Android клиента")).Start();
+            new Thread(() => client.SendRequest("Первое сообщение от Android клиента")).Start();
+            DisplayAlert("Уведомление", "Сообщение доставлено", "ОK");
         }
+
         private void RebootPC(object sender, EventArgs e)
         {
             client = new AndroidClient(AdressServer.Text, PortServer.Text);
             new Thread(() =>
-               client.PowerOff("Второе сообщение от Android клиента")).Start();
+               client.SendRequest("Второе сообщение от Android клиента")).Start();
+            DisplayAlert("Уведомление", "Сообщение доставлено", "ОK");
         }
-
-
 
     }
 }
