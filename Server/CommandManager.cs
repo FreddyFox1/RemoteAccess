@@ -9,7 +9,7 @@ namespace Server
 
     public class CommandManager
     {
-        public void CommandLine(string line)
+        public static void CommandLine(string line)
         {
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             p.StartInfo.CreateNoWindow = false;

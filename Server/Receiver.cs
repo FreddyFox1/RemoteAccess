@@ -10,7 +10,7 @@ namespace Server
     interface Receiver
     {
         void StartReceive();
-        void SendAnswer(string Message);
+        //void SendAnswer(string Message);
     }
 
     public class ServerReceiver : Receiver
@@ -39,21 +39,25 @@ namespace Server
                         myCompleteMessage.AppendFormat("{0}", Encoding.UTF8.GetString(myReadBuffer, 0, numberOfBytesRead));
                     }
                     while (stream.DataAvailable);
+                    //new Task(() => CommandManager.CommandLine(myCompleteMessage.ToString())).Start();
+                    CommandManager.CommandLine(myCompleteMessage.ToString());
+
                     Console.WriteLine(myCompleteMessage);
+
                 }
             }
             finally
             {
-                stream.Close();
-                client.Close();
+                //stream.Close();
+                //client.Close();
             }
         }
 
-        public void SendAnswer(string Message)
-        {
-            Byte[] responseData = Encoding.UTF8.GetBytes(Message);
-            stream.Write(responseData, 0, responseData.Length);
-        }
+        //public void SendAnswer(string Message)
+        //{
+        //    Byte[] responseData = Encoding.UTF8.GetBytes(Message);
+        //    stream.Write(responseData, 0, responseData.Length);
+        //}
 
     }
 }
