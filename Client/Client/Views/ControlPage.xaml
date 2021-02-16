@@ -37,19 +37,23 @@
                     Margin="0,30,0,0"
                     
                         VerticalOptions="End" >
-                <Button 
+                    <Button 
                     Margin="0,10,0,0" Text="Выключить ПК"
-                        Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White"   
                         Clicked="PowerOff"
                         />
-                <Button 
+                    <Button 
                         Margin="0,10,0,0" Text="Перезагрузить ПК"
-                        Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" 
                         Clicked="RebootPC"
+                        />
+                    <Button 
+                        Margin="0,10,0,0" Text="Отмена"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" 
+                        Clicked="CancelOperation"
                         />
                 </StackLayout>
             </StackLayout>

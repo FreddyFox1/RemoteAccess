@@ -17,14 +17,14 @@ namespace Client.Services
         {
             IPAddress = iPAddress;
             Port = int.Parse(port);
+            //ClientSender = new TcpClient(IPAddress, Port);
         }
 
-        public bool SendRequest(string Message)
+        public string SendRequest(string Message)
         {
             ClientSender = new TcpClient(IPAddress, Port);
-            Byte[] data = Encoding.UTF8.GetBytes(Message);
             NetworkStream stream = ClientSender.GetStream();
-
+            Byte[] data = Encoding.UTF8.GetBytes(Message);
             try
             {
                 // Отправка сообщения
@@ -43,9 +43,9 @@ namespace Client.Services
                 responseData = completeMessage.ToString();
                 if (!(String.IsNullOrEmpty(responseData)))
                 {
-                    return true;
+                    return responseData;
                 }
-                else return false;
+                else return "Сообщение не доставлено";
             }
             finally
             {
