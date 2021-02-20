@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,14 @@ namespace Server
     {
         public static void CommandLine(string line)
         {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.CreateNoWindow = false;
-            p.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            p.StartInfo.FileName = "cmd.exe";
-            p.StartInfo.Arguments = line;
-            p.Start();
+            ProcessStartInfo cmd = new ProcessStartInfo(@"cmd.exe", @"/C " + line);
+            // скрываем окно запущенного процесса
+            cmd.WindowStyle = ProcessWindowStyle.Hidden;
+            cmd.RedirectStandardOutput = true;
+            cmd.UseShellExecute = false;
+            cmd.CreateNoWindow = true;
+            // запускаем процесс
+            Process procCommand = Process.Start(cmd);
         }
     }
 }

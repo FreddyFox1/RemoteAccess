@@ -9,5 +9,10 @@ namespace Server
     public class Sender
     {
 
+        //public void SendAnswer(string Message)
+        //{
+        //    Byte[] responseData = Encoding.UTF8.GetBytes(Message);
+        //    stream.Write(responseData, 0, responseData.Length);
+        //}
     }
 }
