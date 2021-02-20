@@ -22,25 +22,19 @@ namespace Client.Views
         private void PowerOff(object sender, EventArgs e)
         {
             client = new AndroidClient(AdressServer.Text, PortServer.Text);
-            //new Thread(() => DisplayAlert("Уведомление", client.SendRequest("/c shutdown -s -t 6000"),"OK")).Start();
-            new Thread(() => client.SendRequest("/c shutdown -s -t 6000")).Start();
-
-
-
+            new Thread(() => client.SendRequest($"shutdown -s -t {TimeSlider.Value}")).Start();
         }
 
         private void RebootPC(object sender, EventArgs e)
         {
             client = new AndroidClient(AdressServer.Text, PortServer.Text);
-            //new Thread(() => DisplayAlert("Уведомление", client.SendRequest("/c shutdown -r -t 6000"), "OK")).Start();
-            new Thread(() => client.SendRequest("/c shutdown -r -t 6000")).Start();
+            new Thread(() => client.SendRequest($"shutdown -r -t {TimeSlider.Value}")).Start();
         }
 
         private void CancelOperation(object sender, EventArgs e)
         {
             client = new AndroidClient(AdressServer.Text, PortServer.Text);
-            //new Thread(() => DisplayAlert("Уведомление", client.SendRequest("/c shutdown -a"), "OK")).Start();
-            new Thread(() => client.SendRequest("/c shutdown -a")).Start();
+            new Thread(() => client.SendRequest("shutdown -a")).Start();
         }
     }
 }

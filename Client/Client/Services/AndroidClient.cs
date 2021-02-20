@@ -17,35 +17,42 @@ namespace Client.Services
         {
             IPAddress = iPAddress;
             Port = int.Parse(port);
-            //ClientSender = new TcpClient(IPAddress, Port);
         }
 
         public string SendRequest(string Message)
         {
-            ClientSender = new TcpClient(IPAddress, Port);
-            NetworkStream stream = ClientSender.GetStream();
-            Byte[] data = Encoding.UTF8.GetBytes(Message);
             try
             {
-                // Отправка сообщения
-                stream.Write(data, 0, data.Length);
-                // Получение ответа
-                Byte[] readingData = new Byte[256];
-                String responseData = String.Empty;
-                StringBuilder completeMessage = new StringBuilder();
-                int numberOfBytesRead = 0;
-                do
+                ClientSender = new TcpClient(IPAddress, Port);
+            }
+            catch (Exception ex) { }
+            NetworkStream stream = ClientSender.GetStream();
+            try
+            {
+                if (ClientSender.Connected)
                 {
-                    numberOfBytesRead = stream.Read(readingData, 0, readingData.Length);
-                    completeMessage.AppendFormat("{0}", Encoding.UTF8.GetString(readingData, 0, numberOfBytesRead));
+                    Byte[] data = Encoding.UTF8.GetBytes(Message);
+                    // Отправка сообщения
+                    stream.Write(data, 0, data.Length);
+                    // Получение ответа
+                    Byte[] readingData = new Byte[256];
+                    String responseData = String.Empty;
+                    StringBuilder completeMessage = new StringBuilder();
+                    int numberOfBytesRead = 0;
+                    do
+                    {
+                        numberOfBytesRead = stream.Read(readingData, 0, readingData.Length);
+                        completeMessage.AppendFormat("{0}", Encoding.UTF8.GetString(readingData, 0, numberOfBytesRead));
+                    }
+                    while (stream.DataAvailable);
+                    responseData = completeMessage.ToString();
+                    if (!(String.IsNullOrEmpty(responseData)))
+                    {
+                        return responseData;
+                    }
+                    else return "Сообщение не доставлено";
                 }
-                while (stream.DataAvailable);
-                responseData = completeMessage.ToString();
-                if (!(String.IsNullOrEmpty(responseData)))
-                {
-                    return responseData;
-                }
-                else return "Сообщение не доставлено";
+                else return "Oops!...Connection timeout";
             }
             finally
             {

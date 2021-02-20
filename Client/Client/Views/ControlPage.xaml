@@ -22,35 +22,52 @@
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ContentView Padding="0,30,0,30" VerticalOptions="FillAndExpand">
-                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="40" />
+                <ContentView Padding="0,15,0,15" VerticalOptions="FillAndExpand">
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="35" />
                 </ContentView>
             </StackLayout>
         </StackLayout>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
-                <Label Padding="0,0,0,20" HorizontalTextAlignment="Center" Text="Введите данные для подключения:" FontSize="Title"/>
+            <StackLayout Orientation="Vertical" Padding="30,10,30,24" Spacing="0">
+                <Label Padding="0,0,0,10" HorizontalTextAlignment="Center" Text="Введите данные для подключения:" FontSize="Title"/>
                 <Entry Text="192.168.31.211" x:Name="AdressServer" Placeholder="Введите IP адрес"></Entry>
                 <Entry Text="21" x:Name="PortServer" Placeholder="Введите номер порта"></Entry>
 
                 <StackLayout 
-                    Margin="0,30,0,0"
-                    
+                    Margin="0,0,0,30"
                         VerticalOptions="End" >
+                    <Label 
+                        Margin="0,15,0,0"
+                        FontSize='Body'
+                        x:Name="lbTime" 
+                        Text="{Binding Source={x:Reference Name=TimeSlider},Path=Value,
+                        StringFormat='Выполнить через: {0:0} мин.'}"/>
+                    <Slider 
+                        Maximum="5"
+                        Minimum="1"
+                        MinimumTrackColor="DeepSkyBlue"
+                        MaximumTrackColor="Black"
+                        ThumbColor="LightBlue"  
+                        x:Name="TimeSlider"
+                        Margin="0,0,0,15"
+                        />
                     <Button 
-                    Margin="0,10,0,0" Text="Выключить ПК"
+                        HeightRequest="40"
+                        Margin="0,10,0,0" Text="Выключить ПК"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White"   
                         Clicked="PowerOff"
                         />
                     <Button 
+                        HeightRequest="40"
                         Margin="0,10,0,0" Text="Перезагрузить ПК"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" 
                         Clicked="RebootPC"
                         />
                     <Button 
-                        Margin="0,10,0,0" Text="Отмена"
+                        HeightRequest="40"
+                        Margin="0,10,0,0" Text="Отменить действия"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" 
                         Clicked="CancelOperation"
