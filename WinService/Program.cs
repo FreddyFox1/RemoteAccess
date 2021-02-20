@@ -5,7 +5,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PowerService
+namespace WinService
 {
     static class Program
     {
@@ -17,7 +17,7 @@ namespace PowerService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new Service()
+                new Service1()
             };
             ServiceBase.Run(ServicesToRun);
         }

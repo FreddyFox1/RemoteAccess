@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // общие сведения об этой сборке.
-[assembly: AssemblyTitle("PowerService")]
+[assembly: AssemblyTitle("WinService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PowerService")]
+[assembly: AssemblyProduct("WinService")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Указанный ниже идентификатор GUID предназначен для идентификации библиотеки типов, если этот проект будет видимым для COM-объектов
-[assembly: Guid("6bc95ea5-3606-4011-87ee-f2a85268f2d2")]
+[assembly: Guid("4e818897-b373-4e18-a2d8-55c358c273ad")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

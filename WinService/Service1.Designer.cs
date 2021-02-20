@@ -1,7 +1,7 @@
 ﻿
-namespace PowerService
+namespace WinService
 {
-    partial class Service
+    partial class Service1
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,8 +29,11 @@ namespace PowerService
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.ServiceName = "Service1";
+            // 
+            // Service1
+            // 
+            this.ServiceName = "RemoteAccess";
+
         }
 
         #endregion
